@@ -1,0 +1,14 @@
+from pydantic import BaseModel
+from typing import Optional
+from uuid import UUID
+
+class DataItemCreate(BaseModel):
+    content: str
+    source: Optional[str] = None
+    metadata: Optional[dict] = None
+
+class DataItemResponse(BaseModel):
+    id: UUID
+    content: str
+    created_at: str
+    # etc.
