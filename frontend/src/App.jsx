@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-console.log("App.jsx loaded");  // Debug log
-
 const App = () => {
   const [content, setContent] = useState('');
   const [query, setQuery] = useState('');
@@ -13,23 +11,20 @@ const App = () => {
   const ingest = async () => {
     try {
       await axios.post(`${API_BASE}/api/ingest`, { content });
-      console.log("Ingest successful");
+      alert('Ingest successful');
     } catch (error) {
-      console.error("Ingest error:", error);
+      alert('Ingest error: ' + error.message);
     }
   };
 
   const search = async () => {
     try {
-      const res = await axios.post(`${API_BASE}/api/query`, { text: query });
+      const res = await axios.post(`${API_BASE}/api/query', { text: query });
       setResults(res.data.matches);
-      console.log("Search successful", res.data);
     } catch (error) {
-      console.error("Search error:", error);
+      alert('Search error: ' + error.message);
     }
   };
-
-  console.log("App component rendered");
 
   return (
     <div>
