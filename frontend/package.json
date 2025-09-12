@@ -1,0 +1,17 @@
+{
+  "name": "simple-frontend",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "serve -s dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",  
+    "vite": "^7.1.5"
+  }
+}
