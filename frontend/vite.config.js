@@ -2,28 +2,25 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
+// ...existing code...
 export default defineConfig({
   plugins: [react()],
-  root: '.',
-  publicDir: 'public',
+  base: '/',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: 'index.html'
+      // changed: use the HTML entry so Vite/Rollup can resolve index.html
+      input: resolve(__dirname, 'index.html')
     }
   },
   server: {
-    open: true,
-    configureServer({ app }) {
-      app.use((req, res, next) => {
-        if (req.url === '/favicon.ico') {
-          res.statusCode = 204; // No content
-          res.end();
-          return;
-        }
-        next();
-      });
-    }
+    open: true
   }
 })
+// ...existing code...
